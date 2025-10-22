@@ -34,10 +34,9 @@ const doesCharacterMatchFilter = (character: Character, filter: string): boolean
 
 
 export default function CharactersComponent() {
-  
   // Estado para el filtro seleccionado
   const [activeFilter, setActiveFilter] = useState("All");
-  
+
   // Referencia al elemento que marca el final de la lista
   const loader = useRef(null);
 
@@ -51,17 +50,15 @@ export default function CharactersComponent() {
     isError,
     error,
   } = useInfiniteQuery({
-    queryKey: ["characters", activeFilter],
-    queryFn: ({ pageParam = 1 }) => fetchCharacters({ pageParam }), // Aquí usamos el fetchCharacters modificado
-    initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) => {
-      // Retorna el ID de la siguiente página si existe, o undefined si es la última.
-      if (lastPage.hasNextPage) {
-          return lastPage.nextPage;
+    queryKey: ['characters'],
+    queryFn: ({ pageParam = 1 }) => fetchCharacters(pageParam),
+    getNextPageParam: (lastPage) => {
+      if (!lastPage || typeof lastPage.currentPage !== 'number' || typeof lastPage.totalPages !== 'number') {
+        return undefined;
       }
-      return undefined;
+      return lastPage.currentPage < lastPage.totalPages ? lastPage.currentPage + 1 : undefined;
     },
-    staleTime: 1000 * 60 * 5,
+    initialPageParam: 1,
   });
   
   // === 2. LÓGICA DE SCROLL (Intersection Observer / Simulación) ===
@@ -98,13 +95,14 @@ export default function CharactersComponent() {
 
   // === 3. PROCESAMIENTO DE DATOS ===
   // Aplanamos y filtramos la lista de todas las páginas cargadas.
-  const allCharacters: Character[] = data?.pages?.flatMap(page => 
-    page.characters.map((item: any) => ({
+  const allCharacters: Character[] = data?.pages?.flatMap((page: any) => 
+    (page?.results || page?.characters || []).map((item: any) => ({
       id: Number(item.id),
       name: String(item.name),
       images: Array.isArray(item.images) ? item.images : [],
       personal: item.personal,
       info: item.info,
+      rank: item.rank || { ninjaRank: {} },
     }))
   ) ?? [];
 

@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:map";
+
 $grid-columns: 12;
 $grid-gutter: 1.5rem;
 
@@ -19,19 +22,19 @@ $breakpoints: (
     display: block;
     position: relative;
 
-    @media (min-width: map-get($breakpoints, "sm")) {
+    @media (min-width: map.get($breakpoints, "sm")) {
         max-width: 540px;
     }
-    @media (min-width: map-get($breakpoints, "md")) {
+    @media (min-width: map.get($breakpoints, "md")) {
         max-width: 720px;
     }
-    @media (min-width: map-get($breakpoints, "lg")) {
+    @media (min-width: map.get($breakpoints, "lg")) {
         max-width: 960px;
     }
-    @media (min-width: map-get($breakpoints, "xl")) {
+    @media (min-width: map.get($breakpoints, "xl")) {
         max-width: 1140px;
     }
-    @media (min-width: map-get($breakpoints, "xxl")) {
+    @media (min-width: map.get($breakpoints, "xxl")) {
         max-width: 1320px;
     }
 }
@@ -102,7 +105,7 @@ $breakpoints: (
 @for $i from 1 through $grid-columns {
     .col-#{$i} {
         flex: 0 0 auto;
-        width: percentage($i / $grid-columns);
+        width: math.percentage(math.div($i, $grid-columns));
         min-width: 0;
         max-width: 100%;
         box-sizing: border-box;
@@ -114,7 +117,7 @@ $breakpoints: (
         @for $i from 1 through $grid-columns {
             .col-#{$breakpoint}-#{$i} {
                 flex: 0 0 auto;
-                width: percentage($i / $grid-columns);
+                width: math.percentage(math.div($i, $grid-columns));
                 min-width: 0;
                 max-width: 100%;
                 box-sizing: border-box;

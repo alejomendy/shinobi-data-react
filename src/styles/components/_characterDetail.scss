@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables para consistencia de color
 $color-primary: #f4a261;
 $color-sidebar-bg: #0d0d0d;
@@ -180,7 +182,7 @@ $color-error: #e76f51;
         transition: color 0.2s;
         
         &:hover {
-            color: lighten($color-primary, 10%);
+            color: color.adjust($color-primary, $lightness: 10%);
         }
     }
   }

@@ -2,23 +2,24 @@ import { useQuery } from "@tanstack/react-query";
 import { Carousel } from "./Components/carousel";
 
 import { fetchCharacters } from "../../api";
-import type { Characters } from "../../models/api_response";
+import type { CharactersResponse } from "../../models/api_response";
 import type { Character } from "../../models/character";
 import CharacterCard from "./Components/main_character_cards";
 
 export default function Home() {
-  const { data, isLoading, isError, error } = useQuery<Characters, Error>({
+  const { data, isLoading, isError, error } = useQuery<CharactersResponse, Error>({
     queryKey: ["characters"],
-    queryFn: fetchCharacters,
+    queryFn: () => fetchCharacters(1),
     staleTime: 1000 * 60 * 5,
   });
 
-  const list: Character[] = (data?.characters ?? []).map((item: Character) => ({
+  const list: Character[] = (data?.results ?? []).map((item: Character) => ({
     id: Number(item.id),
     name: String(item.name),
     images: Array.isArray(item.images)
       ? item.images.map((img) => String(img))
       : [],
+    rank: item.rank || { ninjaRank: {} },
   }));
 
   return (
