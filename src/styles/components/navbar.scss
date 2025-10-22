@@ -1,0 +1,114 @@
+/* === NAVBAR GENERAL === */
+.navbar {
+  background-color: #1a1410;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  font-family: "Poppins", sans-serif;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* --- LADO IZQUIERDO --- */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.logo-icon {
+  color: #f4a261;
+  font-size: 1.3rem;
+}
+
+.logo-text {
+  color: #fff;
+}
+
+/* --- LINKS --- */
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #bcbcbc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #f4a261;
+}
+
+/* --- LADO DERECHO: BUSCADOR --- */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  background-color: #2a201b;
+  border: none;
+  border-radius: 10px;
+  padding: 0.45rem 2rem 0.45rem 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  width: 180px;
+}
+
+.search-box input::placeholder {
+  color: #aaa;
+}
+
+.search-box i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* --- Hover del input --- */
+.search-box input:focus {
+  background-color: #33261f;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .search-box input {
+    width: 140px;
+  }
+}

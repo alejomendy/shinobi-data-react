@@ -1,0 +1,12 @@
+// _utilities.scss
+// Utility helpers
+
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+@import "layout";
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

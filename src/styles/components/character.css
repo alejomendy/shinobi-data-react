@@ -1,0 +1,90 @@
+.characters-page {
+  padding: 3rem 2.5rem;
+  background-color: #221610;
+;
+  min-height: 100vh;
+  color: #ddd;
+  font-family: "Poppins", sans-serif;
+}
+.characters-page .header-container {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+}
+.characters-page .header-container .title-large {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+.characters-page .header-container .subtitle-small {
+  font-size: 1rem;
+  color: #ddd;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.characters-page .header-container .error-message {
+  color: #f4a261;
+}
+.characters-page .filters-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+.characters-page .filters-container .filter-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.characters-page .filters-container .filter-buttons button {
+  background: #111111;
+  border: 2px solid #111111;
+  color: #ddd;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.characters-page .filters-container .filter-buttons button:hover {
+  background: #333333;
+}
+.characters-page .filters-container .filter-buttons button.active {
+  background: #f4a261;
+  border-color: #f4a261;
+  color: #111111;
+  box-shadow: 0 0 10px rgba(244, 162, 97, 0.5);
+}
+.characters-page .cardgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
+.characters-page .no-results {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #888;
+  padding: 3rem;
+}
+@media (max-width: 768px) {
+  .characters-page {
+    padding: 2rem 1rem;
+  }
+  .characters-page .header-container {
+    margin-bottom: 2rem;
+  }
+  .characters-page .filters-container {
+    margin-bottom: 2rem;
+  }
+  .characters-page .filter-buttons button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  .characters-page .cardgrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}/*# sourceMappingURL=character.css.map */

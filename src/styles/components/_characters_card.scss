@@ -1,0 +1,39 @@
+.character-card {
+  color: #fff;
+  border-radius: 8px;
+  height: 350px;
+  overflow: hidden;
+  text-align: left;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+  margin: 15px;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  &__image {
+    width: 100%;
+    height: 260px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  &__name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.1rem;
+  }
+
+  &__description {
+    font-size: 0.9rem;
+    color: #b5b5b5;
+    margin: 0px;
+    line-height: 1.1;
+  }
+}

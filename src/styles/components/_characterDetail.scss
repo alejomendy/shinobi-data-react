@@ -1,0 +1,394 @@
+// Variables para consistencia de color
+$color-primary: #f4a261;
+$color-sidebar-bg: #0d0d0d;
+$color-content-bg: #111111;
+$color-text-light: #ddd;
+$color-text-dark: #888;
+$color-border: #333333;
+$color-error: #e76f51;
+
+.character-detail {
+  display: flex;
+  gap: 3rem;
+  padding: 2.5rem;
+  min-height: 100vh;
+  background: #221610;
+  color: $color-text-light;
+  font-family: "Poppins", sans-serif;
+
+  // Estilos para mensajes de estado (Carga/Error)
+  .loading-message, .error-message {
+    margin: auto;
+    font-size: 1.2rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: $color-sidebar-bg;
+    color: $color-primary;
+  }
+  .error-message {
+    color: $color-error;
+  }
+
+  // === PANEL IZQUIERDO (SIDEBAR) ===
+  .character-sidebar-detail {
+    background: $color-sidebar-bg;
+    border-radius: 1rem;
+    padding: 2rem 1.75rem;
+    width: 320px;
+    max-width: 100%; 
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    box-shadow: 0 0 40px rgba(244, 162, 97, 0.08), inset 0 0 10px rgba(0, 0, 0, 0.5); 
+
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    .profile-image-detail {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 5px solid $color-primary;
+      background: #080808;
+      box-shadow: 0 0 15px rgba(244, 162, 97, 0.4);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .village-badge {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 40px; 
+        height: 40px; 
+        background: $color-primary;
+        border-radius: 50%;
+        padding: 5px;
+        border: 2px solid $color-sidebar-bg; 
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+        
+        img {
+          width: 100%;
+          height: 100%;
+          filter: brightness(0) invert(1);
+          object-fit: contain;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      text-align: center;
+    }
+
+    .subtitle {
+      color: $color-primary;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center; 
+      white-space: normal; 
+      word-break: break-word;
+      padding: 0 0.5rem; 
+    }
+
+    // === GRUPO DE TARJETAS DE INFORMACIÓN (Corrección principal) ===
+    .info-group {
+      width: 100%; // **Clave: Ocupa todo el ancho disponible del padding**
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      // Removimos `align-items: center` aquí para no forzar las tarjetas al centro,
+      // ya que queremos que la tarjeta ocupe el 100% y se alinee a la izquierda internamente.
+    }
+
+    .info-card {
+      background: #1a1a1a;
+      border: 1px solid #222222;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      width: 100%; // **Clave: Ocupa el 100% del `.info-group`**
+      box-sizing: border-box; // Asegura que padding y border no aumenten el ancho
+      display: flex;
+      align-items: center;
+      text-align: left; 
+      gap: 1rem;
+
+      .icon {
+        color: $color-primary;
+        flex-shrink: 0;
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+        // Permite que el contenido se expanda al resto del espacio
+        flex-grow: 1; 
+      }
+
+      h4 {
+        color: $color-text-dark;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      span {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .land-text {
+        color: $color-text-dark;
+        font-size: 0.85rem;
+        font-weight: 400;
+        margin-top: 2px;
+      }
+    }
+    // === FIN GRUPO DE TARJETAS DE INFORMACIÓN ===
+
+    .back-link {
+        color: $color-primary;
+        text-decoration: none;
+        margin-top: auto;
+        padding-top: 1rem;
+        display: block;
+        transition: color 0.2s;
+        
+        &:hover {
+            color: lighten($color-primary, 10%);
+        }
+    }
+  }
+
+  // === PANEL DERECHO (MAIN CONTENT) ===
+  .character-content-detail {
+    flex: 1;
+    background: $color-content-bg;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    border: 1px solid $color-border;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #222; 
+      margin-bottom: 2rem;
+      padding: 0;
+      gap: 2rem;
+
+      button {
+        background: none;
+        border: none;
+        color: $color-text-dark;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        cursor: pointer;
+        transition: 0.2s;
+        font-weight: 500;
+        
+        &.active {
+          color: $color-primary;
+          border-bottom: 3px solid $color-primary;
+          font-weight: 600;
+        }
+
+        &:hover:not(.active) {
+          color: $color-primary;
+        }
+      }
+    }
+
+    .tab-content {
+      
+      .section-title {
+        color: $color-primary;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      
+      .mt-4 {
+        margin-top: 2rem !important;
+      }
+
+      .origin-story-text {
+        font-size: 0.95rem;
+        color: $color-text-light;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      /* --- Estilos de Key Milestones (Timeline) --- */
+      .milestones-timeline {
+        position: relative;
+        padding-left: 20px;
+        border-left: 2px solid $color-border; 
+        
+        .milestone-item {
+          position: relative;
+          margin-bottom: 1.5rem;
+          padding-left: 25px;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .milestone-dot {
+            position: absolute;
+            left: -11px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: $color-primary;
+            border: 4px solid $color-content-bg;
+            box-shadow: 0 0 10px rgba(244, 162, 97, 0.5);
+          }
+
+          .milestone-content {
+            h4 {
+              margin: 0;
+              font-size: 1rem;
+              color: #fff;
+              font-weight: 600;
+            }
+            p {
+              margin: 0.2rem 0 0 0;
+              color: $color-text-dark;
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+      /* --- Fin Estilos Timeline --- */
+
+      // Estilos para H4 dentro de las pestañas de contenido
+      h4 {
+        color: $color-primary;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+
+        .chip {
+          background: #222;
+          color: $color-primary;
+          padding: 0.3rem 0.8rem;
+          border-radius: 999px;
+          font-size: 0.85rem;
+          border: 1px solid rgba(244, 162, 97, 0.5);
+        }
+      }
+
+      .list-columns-2 {
+        columns: 2;
+        column-gap: 3rem;
+        list-style: none;
+        padding: 0;
+        
+        li {
+          break-inside: avoid;
+          list-style: disc;
+          margin-left: 1.5rem;
+          margin-bottom: 0.5rem;
+          font-size: 0.95rem;
+          color: $color-text-light;
+        }
+      }
+
+      .stats-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.5rem 2rem;
+
+        p {
+          margin: 0;
+          padding: 0.3rem 0;
+          border-bottom: 1px dashed #222;
+          font-size: 0.95rem;
+          color: $color-text-dark;
+          
+          strong {
+            color: #fff;
+            margin-right: 0.5rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  // === RESPONSIVE ===
+  @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+
+    .character-sidebar-detail {
+      width: 100%;
+      padding: 1.5rem;
+      .profile-image-detail {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    .character-content-detail {
+      width: 100%;
+      padding: 1.5rem;
+      .tabs {
+        flex-wrap: wrap; 
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border-bottom: none;
+        button {
+          flex-grow: 1;
+          padding: 0.75rem 1rem;
+        }
+      }
+    }
+    
+    .milestones-timeline {
+      padding-left: 15px;
+    }
+  }
+}

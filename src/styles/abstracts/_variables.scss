@@ -1,0 +1,42 @@
+// _variables.scss
+// Define project-wide variables here
+$font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+$line-height: 1.5;
+$font-weight: 400;
+
+// Colors
+$color-text-dark: #213547;
+$color-bg-light: #ffffff;
+$color-text-light: rgba(255, 255, 255, 0.87);
+$color-bg-dark: #221610;
+$link-color: #646cff;
+$link-color-hover: #535bf2;
+$button-bg-dark: #1a1a1a;
+$button-bg-light: #f9f9f9;
+
+// Size & spacing
+$radius: 8px;
+$container-min-width: 320px;
+$container-max-width: 1280px;
+
+// Utility
+$transition-fast: 0.25s;
+
+// Expose CSS custom properties for runtime theme changes
+:root {
+  --font-family: #{$font-family};
+  --line-height: #{$line-height};
+  --font-weight: #{$font-weight};
+
+  --color-text-dark: #{$color-text-dark};
+  --color-bg-light: #{$color-bg-light};
+  --color-text-light: #{$color-text-light};
+  --color-bg-dark: #{$color-bg-dark};
+  --link-color: #{$link-color};
+  --link-color-hover: #{$link-color-hover};
+  --button-bg-dark: #{$button-bg-dark};
+  --button-bg-light: #{$button-bg-light};
+
+  --radius: #{$radius};
+  --transition-fast: #{$transition-fast};
+}

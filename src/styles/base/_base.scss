@@ -1,0 +1,31 @@
+// _base.scss
+// Base styles (moved from existing `index.css`) - keeps light/dark color-scheme and core elements
+
+:root {
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight);
+
+  color-scheme: light dark;
+  color: var(--color-text-light);
+  background-color: var(--color-bg-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: var(--container-min-width);
+  max-width: var(--container-max-width);
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}

@@ -1,0 +1,34 @@
+// _mixins.scss
+// Helpful mixins for responsive and reusable styles
+
+@mixin visually-hidden() {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 599px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 600px) and (max-width: 899px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 900px) {
+      @content;
+    }
+  }
+}
+
+@mixin center-flex($dir: row) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: center;
+  justify-content: center;
+}
